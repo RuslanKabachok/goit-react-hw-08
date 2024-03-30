@@ -1,7 +1,7 @@
 function UserMenu() {
   return (
     <div>
-      <p>Welcome!</p>
+      <p>Welcome User!</p>
       <button type="button">Logout</button>
     </div>
   );

@@ -2,8 +2,8 @@ import { useDispatch } from 'react-redux';
 import { useEffect, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Layout';
+import ContactList from '../ContactList/ContactList';
 // import ContactForm from '../ContactForm/ContactForm';
-// import ContactList from '../ContactList/ContactList';
 // import SearchBox from '../SearchBox/SearchBox';
 import HomePage from '../HomePage/HomePage';
 import Registration from '../../pages/Registration';
@@ -23,13 +23,13 @@ function App() {
 
   return (
     <Layout>
-      <Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/register" element={<Registration />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/tasks" element={<TasksPage />} /> */}
-          {/* <h1>Phonebook</h1>
+          <Route path="/contacts" element={<ContactList />} />
+          {/* 
           <ContactForm />
           <SearchBox />
           {loading && <h1>Loading contacts</h1>}

@@ -3,7 +3,12 @@ import css from './LoginForm.module.css';
 
 function LoginForm() {
   return (
-    <Formik>
+    <Formik
+      initialValues={{
+        email: '',
+        password: '',
+      }}
+    >
       <Form className={css.form}>
         <label className={css.label}>
           Email

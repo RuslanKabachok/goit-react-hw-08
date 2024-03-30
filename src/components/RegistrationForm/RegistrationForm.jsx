@@ -3,7 +3,13 @@ import css from '../RegistrationForm/RegistrationForm.module.css';
 
 function RegistrationForm() {
   return (
-    <Formik>
+    <Formik
+      initialValues={{
+        name: '',
+        email: '',
+        password: '',
+      }}
+    >
       <Form className={css.form}>
         <label className={css.label}>
           Username
