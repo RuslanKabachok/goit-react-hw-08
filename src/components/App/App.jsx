@@ -1,5 +1,4 @@
-import { useDispatch } from 'react-redux';
-import { useEffect, Suspense } from 'react';
+import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from '../Layout/Layout';
 import ContactList from '../ContactList/ContactList';
@@ -8,18 +7,12 @@ import ContactList from '../ContactList/ContactList';
 import HomePage from '../HomePage/HomePage';
 import Registration from '../../pages/Registration';
 import Login from '../../pages/Login';
-import { fetchContacts } from '../../redux/contacts/operations';
+// import { fetchContacts } from '../../redux/contacts/operations';
 // import { selectLoading, selecError } from '../../redux/contacts/selectors';
 
 function App() {
   // const loading = useSelector(selectLoading);
   // const error = useSelector(selecError);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
 
   return (
     <Layout>
