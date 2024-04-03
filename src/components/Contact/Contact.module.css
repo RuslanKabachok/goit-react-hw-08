@@ -17,7 +17,8 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  width: 370px;
+  width: 550px;
+  height: 125px;
   margin-bottom: 15px;
 }
 
@@ -33,4 +34,10 @@
 
 .icon {
   margin-right: 8px;
+}
+
+.btnWrapper {
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
 }
