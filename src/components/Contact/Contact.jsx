@@ -16,6 +16,7 @@ function Contact({ info }) {
         <ContactEditor
           initialValue={info.name}
           contactId={info.id}
+          contactNumber={info.number}
           onClose={() => {
             setIsEditing(false);
           }}
@@ -37,7 +38,7 @@ function Contact({ info }) {
         <button
           className={css.btn}
           onClick={() => {
-            console.log(info.id);
+            console.log(info);
             setIsEditing(true);
           }}
         >
@@ -46,6 +47,7 @@ function Contact({ info }) {
         <button
           className={css.btn}
           onClick={() => {
+            console.log(info.id);
             dispatch(deleteContact(info.id));
           }}
         >

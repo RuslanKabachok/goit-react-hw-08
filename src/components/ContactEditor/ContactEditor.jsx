@@ -2,17 +2,19 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateContact } from '../../redux/contacts/operations';
 
-export const ContactEditor = (initialValue, contactId, onClose) => {
+export const ContactEditor = ({
+  initialValue,
+  contactId,
+  onClose,
+  contactNumber,
+}) => {
   const dispatch = useDispatch();
-  const [text, setText] = useState(initialValue.initialValue);
+  const [text, setText] = useState(initialValue);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      updateContact({
-        id: contactId,
-        name: text,
-      })
+      updateContact({ id: contactId, name: text, number: contactNumber })
     )
       .unwrap()
       .then(() => {
@@ -26,6 +28,7 @@ export const ContactEditor = (initialValue, contactId, onClose) => {
         type="text"
         value={text}
         onChange={(e) => {
+          console.log(contactId);
           setText(e.target.value);
         }}
       />
