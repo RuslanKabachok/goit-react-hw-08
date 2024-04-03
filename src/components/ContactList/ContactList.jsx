@@ -15,7 +15,6 @@ function ContactList() {
   }, [dispatch]);
 
   const visibleContacts = useSelector(selectFilteredContacts);
-  // const memoizedContacts = useMemo(() => visibleContacts, [visibleContacts]);
 
   return (
     <div>
