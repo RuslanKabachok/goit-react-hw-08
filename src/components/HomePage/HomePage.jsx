@@ -8,10 +8,12 @@ function HomePage() {
         asperiores?
       </p>
       <p>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam magnam
-        perspiciatis officiis, repellendus voluptate pariatur sapiente
-        distinctio voluptatibus. Ex in expedita itaque hic, ullam blanditiis
-        atque est maxime recusandae quibusdam?
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas,
+        consequuntur. Blanditiis eius quisquam cum vitae recusandae pariatur
+        repudiandae totam amet. Nemo libero modi suscipit nostrum, ullam autem
+        neque vitae quae ab beatae. Quibusdam accusamus optio et, quo, esse fuga
+        possimus at repudiandae eum, dicta vel. Totam quidem consequuntur harum
+        nihil, eveniet vel dicta deserunt sed?
       </p>
     </div>
   );

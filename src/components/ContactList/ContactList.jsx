@@ -4,7 +4,10 @@ import css from '../ContactList/ContactList.module.css';
 import Contact from '../Contact/Contact';
 import ContactForm from '../ContactForm/ContactForm';
 import SearchBox from '../SearchBox/SearchBox';
-import { selectFilteredContacts } from '../../redux/contacts/selectors';
+import {
+  selectFilteredByNameContacts,
+  selectFilteredByNumberContacts,
+} from '../../redux/contacts/selectors';
 import { fetchContacts } from '../../redux/contacts/operations';
 
 function ContactList() {
@@ -14,7 +17,12 @@ function ContactList() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const visibleContacts = useSelector(selectFilteredContacts);
+  const visibleContactsByName = useSelector(selectFilteredByNameContacts);
+  const visibleContactsByNumber = useSelector(selectFilteredByNumberContacts);
+
+  const visibleContacts = visibleContactsByName.filter((contact) =>
+    visibleContactsByNumber.includes(contact)
+  );
 
   return (
     <div>

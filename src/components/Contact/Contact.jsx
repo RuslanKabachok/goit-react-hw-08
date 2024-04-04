@@ -5,9 +5,11 @@ import { BsFillPersonFill } from 'react-icons/bs';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { ContactEditor } from '../ContactEditor/ContactEditor';
+import Modal from '../Modal/Modal';
 
 function Contact({ info }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const dispatch = useDispatch();
 
   return (
@@ -38,8 +40,7 @@ function Contact({ info }) {
         <button
           className={css.btn}
           onClick={() => {
-            console.log(info);
-            setIsEditing(true);
+            setIsModalOpen(true);
           }}
         >
           Update
@@ -47,13 +48,22 @@ function Contact({ info }) {
         <button
           className={css.btn}
           onClick={() => {
-            console.log(info.id);
             dispatch(deleteContact(info.id));
           }}
         >
           Delete
         </button>
       </div>
+
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => {
+          setIsModalOpen(false);
+        }}
+        contactName={info.name}
+        contactNumber={info.number}
+        contactId={info.id}
+      ></Modal>
     </div>
   );
 }
