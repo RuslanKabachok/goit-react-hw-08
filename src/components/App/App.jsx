@@ -1,5 +1,6 @@
 import { Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 import Layout from '../Layout/Layout';
 import ContactList from '../ContactList/ContactList';
 import HomePage from '../HomePage/HomePage';
@@ -43,6 +44,7 @@ function App() {
           </Routes>
         </Suspense>
       )}
+      <Toaster />
     </Layout>
   );
 }

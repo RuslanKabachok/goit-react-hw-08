@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
@@ -23,7 +24,15 @@ function ContactForm() {
 
   const handleSubmit = (values, actions) => {
     const contact = { name: values.name, number: values.number };
-    dispatch(addContact(contact));
+    dispatch(addContact(contact))
+      .unwrap()
+      .then(
+        toast.success(`You've added a ${values.name}  contact!`, {
+          duration: 3000,
+          position: 'top-center',
+          icon: '✅',
+        })
+      );
     actions.resetForm();
   };
 

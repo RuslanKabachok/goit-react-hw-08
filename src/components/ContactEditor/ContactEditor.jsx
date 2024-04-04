@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateContact } from '../../redux/contacts/operations';
@@ -18,6 +19,11 @@ export const ContactEditor = ({
     )
       .unwrap()
       .then(() => {
+        toast.success(`You've changed a ${text} contact!`, {
+          duration: 3000,
+          position: 'top-center',
+          icon: '🤗',
+        });
         onClose();
       });
   };
@@ -28,7 +34,6 @@ export const ContactEditor = ({
         type="text"
         value={text}
         onChange={(e) => {
-          console.log(contactId);
           setText(e.target.value);
         }}
       />

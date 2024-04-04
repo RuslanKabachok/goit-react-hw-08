@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import { register } from '../../redux/auth/operations';
@@ -7,8 +8,15 @@ function RegistrationForm() {
   const dispatch = useDispatch();
 
   const handleSubmit = (values, actions) => {
-    console.log(values);
-    dispatch(register(values));
+    dispatch(register(values))
+      .unwrap()
+      .then(
+        toast.success('Welcome to Contact App!', {
+          duration: 3000,
+          position: 'top-center',
+          icon: '🤗',
+        })
+      );
     actions.resetForm();
   };
 

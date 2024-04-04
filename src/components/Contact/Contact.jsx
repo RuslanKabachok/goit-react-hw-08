@@ -1,16 +1,15 @@
-import { useDispatch } from 'react-redux';
-import { deleteContact } from '../../redux/contacts/operations';
 import css from '../Contact/Contact.module.css';
 import { BsFillPersonFill } from 'react-icons/bs';
 import { BsFillTelephoneFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { ContactEditor } from '../ContactEditor/ContactEditor';
 import Modal from '../Modal/Modal';
+import DeleteModal from '../DeleteModal/DeleteModal';
 
 function Contact({ info }) {
   const [isEditing, setIsEditing] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const dispatch = useDispatch();
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   return (
     <div className={css.card}>
@@ -48,7 +47,7 @@ function Contact({ info }) {
         <button
           className={css.btn}
           onClick={() => {
-            dispatch(deleteContact(info.id));
+            setIsDeleteModalOpen(true);
           }}
         >
           Delete
@@ -64,6 +63,14 @@ function Contact({ info }) {
         contactNumber={info.number}
         contactId={info.id}
       ></Modal>
+      <DeleteModal
+        isOpen={isDeleteModalOpen}
+        contactId={info.id}
+        contactName={info.name}
+        onClose={() => {
+          setIsDeleteModalOpen(false);
+        }}
+      />
     </div>
   );
 }
