@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import css from '../ContactList/ContactList.module.css';
+import css from './Contacts.module.css';
 import Contact from '../Contact/Contact';
 import ContactForm from '../ContactForm/ContactForm';
 import SearchBox from '../SearchBox/SearchBox';
@@ -10,7 +10,7 @@ import {
 } from '../../redux/contacts/selectors';
 import { fetchContacts } from '../../redux/contacts/operations';
 
-function ContactList() {
+function Contacts() {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,4 +40,4 @@ function ContactList() {
   );
 }
 
-export default ContactList;
+export default Contacts;

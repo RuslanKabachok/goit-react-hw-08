@@ -2,7 +2,7 @@ import { Suspense, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import Layout from '../Layout/Layout';
-import ContactList from '../ContactList/ContactList';
+import Contacts from '../Contacts/Contacts';
 import HomePage from '../HomePage/HomePage';
 import Registration from '../../pages/Registration';
 import Login from '../../pages/Login';
@@ -21,31 +21,43 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Layout>
+    <>
       {isRefreshing ? (
         <b>Refreshing user, please wait...</b>
       ) : (
-        <Suspense fallback={<div>Loading...</div>}>
-          <Routes>
-            <Route path="/" element={<HomePage />}></Route>
-            <Route
-              path="/register"
-              element={<RestrictedRoute component={<Registration />} />}
-            />
-            <Route
-              path="/login"
-              element={<RestrictedRoute component={<Login />} />}
-            />
+        <Layout>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Routes>
+              <Route path="/" element={<HomePage />}></Route>
+              <Route
+                path="/register"
+                element={
+                  <RestrictedRoute
+                    component={<Registration />}
+                    redirectTo="/contacts"
+                  />
+                }
+              />
+              <Route
+                path="/login"
+                element={
+                  <RestrictedRoute
+                    component={<Login />}
+                    redirectTo="/contacts"
+                  />
+                }
+              />
 
-            <Route
-              path="/contacts"
-              element={<PrivateRoute component={<ContactList />} />}
-            />
-          </Routes>
-        </Suspense>
+              <Route
+                path="/contacts"
+                element={<PrivateRoute component={<Contacts />} />}
+              />
+            </Routes>
+          </Suspense>
+          <Toaster />
+        </Layout>
       )}
-      <Toaster />
-    </Layout>
+    </>
   );
 }
 

@@ -5,6 +5,7 @@ import {
   addContact,
   updateContact,
 } from './operations';
+import { logout } from '../auth/operations';
 
 const slice = createSlice({
   name: 'contacts',
@@ -58,6 +59,9 @@ const slice = createSlice({
           (contact) => contact.id === action.payload.id
         );
         state.items[contactToUpdate] = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        (state.items = []), (state.error = null), (state.loading = false);
       }),
 });
 

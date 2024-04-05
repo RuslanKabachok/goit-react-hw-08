@@ -9,12 +9,16 @@ function UserMenu() {
 
   return (
     <div className={css.wrapper}>
-      <p className={css.username}>Welcome, {nickName.name}!</p>
+      <p className={css.username}>
+        Welcome,
+        <span className={css.username_styled}> {nickName.name}!</span>
+      </p>
       <button
         type="button"
         onClick={() => {
           dispatch(logout());
         }}
+        className={css.button}
       >
         Logout
       </button>
